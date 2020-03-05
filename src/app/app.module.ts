@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
+import { AuthGuard as AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -46,17 +47,21 @@ import { AuthService } from './auth.service';
     NgbPaginationModule,
     RouterModule.forRoot([
       { path:'' , component: HomeComponent},
-      { path:'my/orders' , component: MyOrdersComponent},
-      { path:'order-sucess' , component: OrderSuccessComponent},
-      { path:'shopping-cart' , component: ShoppingCartComponent},
       { path:'products' , component: ProductsComponent},
+      { path:'shopping-cart' , component: ShoppingCartComponent},
+      { path:'login' , component: LoginComponent},
+
+      { path:'my/orders' , component: MyOrdersComponent,canActivate:[AuthGuard]},
+      { path:'order-sucess' , component: OrderSuccessComponent,canActivate:[AuthGuard]},
+      { path:'check-out' , component: CheckOutComponent,canActivate:[AuthGuard]},
+      
       { path:'admin/orders' , component: AdminOrdersComponent},
-      { path:'admin/products' , component: AdminProductsComponent},
-      { path:'login' , component: LoginComponent}
+      { path:'admin/products' , component: AdminProductsComponent,canActivate:[AuthGuard]},
     ])
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
