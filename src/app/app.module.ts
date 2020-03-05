@@ -21,6 +21,8 @@ import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuard as AuthGuard } from './auth-guard.service';
+import { AdminAuthGuardService } from './admin-auth-guard.service';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { AuthGuard as AuthGuard } from './auth-guard.service';
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    AdminAuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
