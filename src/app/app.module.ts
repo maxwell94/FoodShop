@@ -57,8 +57,8 @@ import { UserService } from './user.service';
       { path:'order-sucess' , component: OrderSuccessComponent,canActivate:[AuthGuard]},
       { path:'check-out' , component: CheckOutComponent,canActivate:[AuthGuard]},
       
-      { path:'admin/orders' , component: AdminOrdersComponent},
-      { path:'admin/products' , component: AdminProductsComponent,canActivate:[AuthGuard]},
+      { path:'admin/orders' , component: AdminOrdersComponent,canActivate:[AuthGuard,AdminAuthGuardService]},
+      { path:'admin/products' , component: AdminProductsComponent,canActivate:[AuthGuard,AdminAuthGuardService]},
     ])
   ],
   providers: [
