@@ -19,6 +19,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -51,10 +52,12 @@ import { LoginComponent } from './login/login.component';
       { path:'products' , component: ProductsComponent},
       { path:'admin/orders' , component: AdminOrdersComponent},
       { path:'admin/products' , component: AdminProductsComponent},
-
+      { path:'login' , component: LoginComponent}
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
