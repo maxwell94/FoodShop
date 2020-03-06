@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/category.service';
 import { ProductService } from 'src/app/product.service';
+import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-product-form',
@@ -10,8 +12,16 @@ import { ProductService } from 'src/app/product.service';
 export class ProductFormComponent implements OnInit {
   
   categories$; 
-  constructor(private categoryService:CategoryService,private productsService:ProductService) {
+  product={};
+
+  constructor(
+    private categoryService: CategoryService,
+    private productsService: ProductService,
+    private route: ActivatedRoute) {
      this.categories$ = categoryService.getCategories();
+
+     let id = this.route.snapshot.paramMap.get('id');
+     if (id) this.productsService.get(id).take(1).subscribe(p => this.product = p);
    }
 
    /** Metodo che salva i dati dal form admin product nel db */
