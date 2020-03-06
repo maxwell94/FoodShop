@@ -66,8 +66,9 @@ import { CustomFormsModule } from 'ng2-validation';
       { path:'check-out' , component: CheckOutComponent,canActivate:[AuthGuard]},
       
       { path:'admin/orders' , component: AdminOrdersComponent,canActivate:[AuthGuard,AdminAuthGuardService]},
-      { path:'admin/products' , component: AdminProductsComponent,canActivate:[AuthGuard,AdminAuthGuardService]},
-      { path: 'admin/products/new' , component:ProductFormComponent,canActivate:[AuthGuard,AdminAuthGuardService]}
+      { path: 'admin/products/new' , component:ProductFormComponent,canActivate:[AuthGuard,AdminAuthGuardService]},
+      { path: 'admin/products/:id' , component:ProductFormComponent,canActivate:[AuthGuard,AdminAuthGuardService]},
+      { path:'admin/products' , component: AdminProductsComponent,canActivate:[AuthGuard,AdminAuthGuardService]}
     ])
   ],
   providers: [
